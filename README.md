@@ -22,7 +22,7 @@ SlackでメンションされたスレッドをLLMで解析し、Google Calendar
 | 要素 | 技術選択 |
 |------|----------|
 | **プラットフォーム** | Google Cloud Run |
-| **言語** | Python 3.11 |
+| **言語** | Python 3.12 |
 | **Webフレームワーク** | FastAPI |
 | **LLMフレームワーク** | LangChain |
 | **LLMモデル** | Gemini 2.5 Flash |

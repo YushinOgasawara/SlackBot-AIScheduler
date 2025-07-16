@@ -1,0 +1,6 @@
+# envファイル
+.env
+.venv
+
+# MacOS
+.DS_Store
