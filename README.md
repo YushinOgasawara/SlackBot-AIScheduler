@@ -1,0 +1,2 @@
+# SlackBot-AIScheduler
+SlackメンションをトリガーとしてAIが自動でGoogleCalendarに予定を入れてくれるBotです．
