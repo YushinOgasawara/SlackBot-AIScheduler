@@ -1,6 +1,8 @@
-# SlackBot-AIScheduler プロトタイプ
+# SlackBot-AIScheduler
 
-SlackでメンションされたスレッドをLLMで解析し、Google Calendarに自動でスケジュールを登録するシステムのプロトタイプです。
+AI-powered Slack bot for automatic calendar scheduling with Gemini 2.5 Flash integration.
+
+SlackでメンションされたスレッドをLLMで解析し、Google Calendarに自動でスケジュールを登録するシステムです。
 
 ## 🚀 クイックスタート
 
@@ -103,24 +105,35 @@ docker-compose logs slack-bot-ai-scheduler
 
 ## 📋 環境変数
 
-| 変数名 | 説明 | 必須 |
-|--------|------|------|
-| `SLACK_BOT_TOKEN` | Slack Bot Token | ✅ |
-| `SLACK_SIGNING_SECRET` | Slack Signing Secret | ✅ |
-| `GEMINI_API_KEY` | Gemini API Key | ✅ |
-| `GOOGLE_CLOUD_PROJECT` | Google Cloud Project ID | ✅ |
-| `GOOGLE_SERVICE_ACCOUNT_FILE` | サービスアカウントファイルパス | ✅ |
-| `LOG_LEVEL` | ログレベル | ⚪ |
-| `SCHEDULE_CONFIDENCE_THRESHOLD` | スケジュール信頼度閾値 | ⚪ |
+| 変数名 | 説明 | 必須 | デフォルト値 |
+|--------|------|------|-------------|
+| `SLACK_BOT_TOKEN` | Slack Bot Token | ✅ | - |
+| `SLACK_SIGNING_SECRET` | Slack Signing Secret | ✅ | - |
+| `GEMINI_API_KEY` | Gemini API Key | ✅ | - |
+| `GOOGLE_CLOUD_PROJECT` | Google Cloud Project ID | ✅ | - |
+| `GOOGLE_SERVICE_ACCOUNT_FILE` | サービスアカウントファイルパス | ⚪ | `service-account.json` |
+| `GOOGLE_SERVICE_ACCOUNT_KEY` | サービスアカウントJSON（文字列） | ⚪ | - |
+| `GOOGLE_CALENDAR_ID` | 対象カレンダーID | ⚪ | `primary` |
+| `LOG_LEVEL` | ログレベル | ⚪ | `INFO` |
+| `SCHEDULE_CONFIDENCE_THRESHOLD` | スケジュール信頼度閾値 | ⚪ | `0.7` |
+| `CALENDAR_TIMEZONE` | カレンダータイムゾーン | ⚪ | `Asia/Tokyo` |
+| `MAX_THREAD_MESSAGES` | 最大スレッドメッセージ数 | ⚪ | `50` |
+| `SLACK_REQUEST_TIMEOUT` | Slack APIタイムアウト（秒） | ⚪ | `30` |
 
 ## 🧪 テスト
 
 ```bash
-# テスト実行（実装後）
+# テスト実行
 pytest tests/
 
 # カバレッジ付きテスト
 pytest --cov=src tests/
+
+# 詳細モードでテスト実行
+pytest -v tests/
+
+# 特定のテストファイルを実行
+pytest tests/test_settings.py
 ```
 
 ## 📚 API エンドポイント
