@@ -1,0 +1,24 @@
+
+services:
+  slack-bot-ai-scheduler:
+    build: .
+    container_name: slack-bot-ai-scheduler
+    ports:
+      - "8080:8080"
+    environment:
+      - SLACK_BOT_TOKEN=${SLACK_BOT_TOKEN}
+      - SLACK_SIGNING_SECRET=${SLACK_SIGNING_SECRET}
+      - GEMINI_API_KEY=${GEMINI_API_KEY}
+      - GOOGLE_CLOUD_PROJECT=${GOOGLE_CLOUD_PROJECT}
+      - GOOGLE_SERVICE_ACCOUNT_FILE=service-account.json
+      - LOG_LEVEL=INFO
+      - SCHEDULE_CONFIDENCE_THRESHOLD=0.7
+    volumes:
+      - ./service-account.json:/app/service-account.json:ro
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8080/health')"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s

@@ -1,3 +1,5 @@
+# jsonファイル
+*.json
 # envファイル
 .env
 .venv
