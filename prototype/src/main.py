@@ -121,7 +121,7 @@ async def slack_events(request: Request, background_tasks: BackgroundTasks):
             return {"challenge": challenge}
         
         # 署名検証
-        if not slack_verification or not slack_verification.verify_signature(body, headers):
+        if not slack_verification.verify_signature(body, headers):
             logger.warning("Invalid Slack signature")
             raise HTTPException(status_code=401, detail="Invalid signature")
         

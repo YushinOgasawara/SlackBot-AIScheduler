@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "slackbot-aischeduler"
-version = "1.0.15"
+version = "1.0.21"
 description = "AI-powered Slack bot for automatic calendar scheduling with Gemini 2.5 Flash integration"
 authors = [
     {name = "SlackBot-AIScheduler Team"}

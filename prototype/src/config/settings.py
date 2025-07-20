@@ -42,7 +42,7 @@ class Settings(BaseSettings):
     
     # アプリケーション情報
     APP_NAME: str = Field(default="SlackBot-AIScheduler", description="Application Name")
-    APP_VERSION: str = Field(default="1.0.15", description="Application Version")
+    APP_VERSION: str = Field(default="1.0.21", description="Application Version")
     
     # 処理設定
     MAX_THREAD_MESSAGES: int = Field(
